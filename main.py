@@ -9,4 +9,7 @@ data = {
 }
 
 df = pd.DataFrame(data)
+#as it return the indexes which i do not need to  of the dataframe 
+# df.to_csv('data.csv' , index = False)
+# df.to_excel('data.xlsx' , index = False)
 print(df)
