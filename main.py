@@ -1,5 +1,7 @@
 import pandas as pd 
 import numpy as np
+import matplotlib.pyplot as plt
+
 
 data = {
     'Name': ['Tom', 'nick', 'krish', 'jack'],
@@ -18,6 +20,8 @@ data = {
 # df = pd.read_csv('data.csv')
 # print(df)
 
+df = pd.read_csv('data.csv')
+
 # ---- --- --- ?Methods to use with df(dataframe)
 #?df.head()  #it will return the first 5 rows of the dataframe (also we can pass the number of rows we want to see)
 #?df.tail()  #it will return the last 5 rows of the dataframe (also we can pass the number of rows we want to see)
@@ -35,6 +39,7 @@ data = {
 #?df.info()  #it will return the information about the dataframe
 #?df.describe()  #it will return the statistical information about the dataframe
 #?df.dtypes  #it will return the data types of the columns of the dataframe
+
 
 #use case of the sample method
 #-> imagine that you have a dataset of 1000 rows and you want to see 10% of the data randomly
@@ -56,8 +61,47 @@ data = {
 #test_df = shuffled_data[cut_off:] #it will return the 30% of the data
 
 
-#-----
+#----- PART two ------
+
+#?df.describe()  #it will return the statistical information about the dataframe
+
+#?df.hist()  #it will return the histogram of the dataframe
+#*btw : hostogram is the graphical representation of the frequency of the data
+#the y-axis represents the frequency of the data ( rows of the dataframe)
+#the x-axis represents the data points (columns of the dataframe)
+
+
+
+#histogram for one column
+#?df['Age'].hist(bins=2)  #it will return the histogram of the Age column
+#?bins=2 means the number of bins you want to see in the histogram
+
+
+addresses_count = df['Address'].value_counts()
+
+#show the histogram
+plt.plot(addresses_count , 'bo--')
+plt.show()
 
 
 
 
+#set custom title and labels
+#?df['Age'].hist(bins=2)
+#?plt.title('Age Distribution')
+
+
+
+
+
+
+
+
+
+# print(df['Age'])  #it will return the frequency of the data points in the Age column
+
+# 0    20
+# 1    21
+# 2    19
+# 3    18
+# Name: Age, dtype: int64 return the name as series
