@@ -78,30 +78,19 @@ df = pd.read_csv('data.csv')
 
 
 addresses_count = df['Address'].value_counts()
+#todoREADING : it will return the addresses and the number of times they are repeated in the dataframe
+age_count = df['Age'].value_counts()
+#todoREADING : it will return the ages and the number of times they are repeated in the dataframe
 
-#show the histogram
-plt.plot(addresses_count , 'bo--')
+
+
+
+plt.bar(age_count.index , age_count.values , color='red' , alpha=0.5) 
+plt.xlabel('Age')
+plt.ylabel('Count')
+plt.title('Age Distribution')
+
 plt.show()
 
 
 
-
-#set custom title and labels
-#?df['Age'].hist(bins=2)
-#?plt.title('Age Distribution')
-
-
-
-
-
-
-
-
-
-# print(df['Age'])  #it will return the frequency of the data points in the Age column
-
-# 0    20
-# 1    21
-# 2    19
-# 3    18
-# Name: Age, dtype: int64 return the name as series
