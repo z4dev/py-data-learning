@@ -94,3 +94,77 @@ plt.show()
 
 
 
+# import pandas as pd
+# import matplotlib.pyplot as plt
+# import numpy as np
+
+# # Load the dataset
+# df = pd.read_excel('zsalam.xls')
+
+# # Ensure 'VoucherDate' is in datetime format
+# df['VoucherDate'] = pd.to_datetime(df['VoucherDate'])
+
+# # Extract Hour, Month, and Day from 'VoucherDate'
+# df['Hour'] = df['VoucherDate'].dt.hour
+# df['Month'] = df['VoucherDate'].dt.month
+# df['Day'] = df['VoucherDate'].dt.day
+
+# # Define time periods for categorization
+# conditions = [
+#     (df['Hour'] >= 2) & (df['Hour'] < 8),      # 2AM to 8AM
+#     (df['Hour'] >= 8) & (df['Hour'] < 14),     # 8AM to 2PM
+#     (df['Hour'] >= 14) & (df['Hour'] < 20),    # 2PM to 8PM
+#     (df['Hour'] >= 20) & (df['Hour'] < 24)     # 8PM to 12AM
+# ]
+
+# choices = ['2AM-8AM', '8AM-2PM', '2PM-8PM', '8PM-12AM']
+
+# # Apply the conditions to create a 'Period' column
+# df['Period'] = np.select(conditions, choices, default='Unknown')
+
+# # Columns to exclude (drop them for analysis)
+# columns_to_exclude = ['CustomerNumber', 'Frst_Name', 'S_Name', 'ItemName', 'EItemName', 'ItemCategoryName', 'VoucherDate']
+# df_filtered = df.drop(columns=columns_to_exclude)
+
+# # Iterate through each unique month and plot separate histograms
+# for month in df['Month'].unique():
+#     # Filter data for the specific month
+#     month_data = df_filtered[df['Month'] == month]
+    
+#     # Ensure there's data for the month
+#     if month_data.empty:
+#         print(f"No data for Month {month}. Skipping...")
+#         continue
+    
+#     # Split data into time periods
+#     morning_data = month_data[month_data['Period'] == '2AM-8AM']
+#     afternoon_data = month_data[month_data['Period'] == '8AM-2PM']
+#     evening_data = month_data[month_data['Period'] == '2PM-8PM']
+#     night_data = month_data[month_data['Period'] == '8PM-12AM']
+    
+#     # Print basic statistics to inspect data distribution
+#     print(f"Month {month}:")
+#     print(f"Morning data count: {morning_data['Hour'].count()}")
+#     print(f"Afternoon data count: {afternoon_data['Hour'].count()}")
+#     print(f"Evening data count: {evening_data['Hour'].count()}")
+#     print(f"Night data count: {night_data['Hour'].count()}")
+    
+#     # Plot histograms for each time period
+#     plt.figure(figsize=(10, 8))
+#     plt.hist(morning_data['Hour'], bins=np.arange(2, 9, 1), alpha=0.7, label='2AM-8AM', edgecolor='black')
+#     plt.hist(afternoon_data['Hour'], bins=np.arange(8, 15, 1), alpha=0.7, label='8AM-2PM', edgecolor='black')
+#     plt.hist(evening_data['Hour'], bins=np.arange(14, 21, 1), alpha=0.7, label='2PM-8PM', edgecolor='black')
+#     plt.hist(night_data['Hour'], bins=np.arange(20, 25, 1), alpha=0.7, label='8PM-12AM', edgecolor='black')
+
+#     # Set plot titles and labels
+#     plt.title(f'Voucher Amounts by Time Period for Month {month}')
+#     plt.xlabel('Hour of the Day')
+#     plt.ylabel('Frequency')
+#     plt.legend()
+
+#     # Rotate x-axis labels for clarity
+#     plt.xticks(rotation=45)
+
+#     # Show the plot for this month
+#     plt.tight_layout()  # Ensures the layout is adjusted properly
+#     plt.show()
