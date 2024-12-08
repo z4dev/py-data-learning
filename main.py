@@ -77,20 +77,21 @@ df = pd.read_csv('data.csv')
 #?bins=2 means the number of bins you want to see in the histogram
 
 
-addresses_count = df['Address'].value_counts()
-#todoREADING : it will return the addresses and the number of times they are repeated in the dataframe
-age_count = df['Age'].value_counts()
-#todoREADING : it will return the ages and the number of times they are repeated in the dataframe
+# addresses_count = df['Address'].value_counts()
+# #todoREADING : it will return the addresses and the number of times they are repeated in the dataframe
+# age_count = df['Age'].value_counts()
+# #todoREADING : it will return the ages and the number of times they are repeated in the dataframe
+
+# print(df['Address'].value_counts()[-1:])
+# print(df['Address'].value_counts()['Gaza'])
 
 
+# plt.bar(age_count.index , age_count.values , color='red' , alpha=0.5) 
+# plt.xlabel('Age')
+# plt.ylabel('Count')
+# plt.title('Age Distribution')
 
-
-plt.bar(age_count.index , age_count.values , color='red' , alpha=0.5) 
-plt.xlabel('Age')
-plt.ylabel('Count')
-plt.title('Age Distribution')
-
-plt.show()
+# plt.show()
 
 
 
@@ -168,3 +169,8 @@ plt.show()
 #     # Show the plot for this month
 #     plt.tight_layout()  # Ensures the layout is adjusted properly
 #     plt.show()
+
+
+
+
+
